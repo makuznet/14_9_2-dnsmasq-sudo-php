@@ -1,0 +1,9 @@
+---
+- name: nginx-php
+  hosts: ya
+  become: true
+  roles:
+    - role: dnsmasq
+      tags: dnsmasq
+    - role: nginx-php
+      tags: nginx-php

@@ -1,0 +1,17 @@
+---
+- name: dnsmasq enable 
+  service:
+    name: nginx
+    state: started
+    enabled: true
+
+# - name: dnsmasq stop
+#   service:
+#     name: dnsmasq
+#     state: stopped
+
+- name: dnsmasq restart
+  service:
+    name: dnsmasq
+    state: restarted
+    enabled: true

@@ -1,0 +1,19 @@
+---
+- name: install dnsmasq
+  apt:
+    update_cache: yes
+    name: dnsmasq
+    state: present
+  tags:
+    - "install dnsmasq"
+  notify:
+    - dnsmasq enable
+
+- name: changing etc_dnsmasq.conf file
+  template:
+    src: "{{ item.src_file }}"
+    dest: "{{ item.dest_file }}"
+  loop:
+    - { src_file: "etc_dnsmasq.conf.j2", dest_file: "/etc/dnsmasq.conf" }
+  notify:
+    - dnsmasq restart
